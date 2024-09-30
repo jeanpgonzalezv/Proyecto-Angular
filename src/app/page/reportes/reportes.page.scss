@@ -1,0 +1,38 @@
+
+
+ion-content {
+  --background: none;
+  background-image: url('/assets/imagenes/logo.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  max-width: 500px;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin: 16px 16PX;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+}
+
+form {
+  width: 100%;
+}
+
+ion-item {
+  margin-bottom: 16px;
+}
+
+ion-button {
+  margin-top: 16px;
+}

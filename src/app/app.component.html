@@ -1,0 +1,74 @@
+<ion-app>
+  <!-- Menú lateral -->
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <!-- Botón para cerrar el menú -->
+        <ion-buttons slot="start">
+          <ion-menu-toggle>
+            <ion-button>
+              <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+            </ion-button>
+          </ion-menu-toggle>
+        </ion-buttons>
+        <ion-title>Menu Content</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <!-- Lista de opciones del menú -->
+      <ion-list>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item (click)="irHome()">
+            <ion-icon name="home-outline" slot="start"></ion-icon>
+            <ion-label>Inicio</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <!-- Mostrar opciones si el usuario no está autenticado -->
+        <ng-container *ngIf="!estaAutenticado()">
+          <ion-menu-toggle auto-hide="false">
+            <ion-item (click)="irLogin()">
+              <ion-icon name="person-outline" slot="start"></ion-icon>
+              <ion-label>Iniciar sesión</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item (click)="irRegistro()">
+              <ion-icon name="person-add-outline" slot="start"></ion-icon>
+              <ion-label>Registrarse</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ng-container>
+
+        <!-- Mostrar opciones si el usuario está autenticado -->
+        <ng-container *ngIf="estaAutenticado()">
+          <ion-menu-toggle auto-hide="false">
+            <ion-item (click)="irPerfil()">
+              <ion-icon name="person-outline" slot="start"></ion-icon>
+              <ion-label>Perfil</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+           <!-- Botón para la sección de Reportes -->
+           <ion-menu-toggle auto-hide="false">
+            <ion-item (click)="irReportes()">
+              <ion-icon name="document-text-outline" slot="start"></ion-icon>
+              <ion-label>Reportes</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item (click)="cerrarSesion()">
+              <ion-icon name="log-out-outline" slot="start"></ion-icon>
+              <ion-label>Cerrar sesión</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ng-container>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <!-- Contenido principal de la aplicación -->
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+</ion-app>

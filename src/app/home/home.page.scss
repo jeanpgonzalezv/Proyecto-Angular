@@ -1,0 +1,21 @@
+.container-1 {
+    background-color: #ffffff; /* Fondo azul claro */
+    border: 1px solid #000000; /* Borde azul más claro */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 10px 16px; /* Espacio interno */
+    margin: 16px 16PX; /* Margen superior e inferior */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+}
+.home{
+  background-color: #ffffff;
+}
+ion-content {
+  --background: none;
+  background-image: url('/assets/imagenes/logo.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+

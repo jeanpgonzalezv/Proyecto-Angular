@@ -1,0 +1,97 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Reportes de Autos Robados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="form-container">
+    <h2>Agregar Reporte</h2>
+
+    <form (ngSubmit)="agregarReporte()">
+      <ion-item>
+        <ion-label>Región</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="nuevoReporte.region"
+          name="region"
+          required
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Tipo de Vehículo</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="nuevoReporte.tipo_vehiculo"
+          name="tipoVehiculo"
+          required
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Marca</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="nuevoReporte.marca"
+          name="marca"
+          required
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Modelo</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="nuevoReporte.modelo"
+          name="modelo"
+          required
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Color</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="nuevoReporte.color"
+          name="color"
+          required
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Patente</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="nuevoReporte.patente"
+          name="patente"
+          required
+        ></ion-input>
+      </ion-item>
+
+      <ion-button expand="full" type="submit">
+        Agregar Reporte
+      </ion-button>
+    </form>
+
+  </div>
+
+    <ion-list>
+      <!-- Mostrar la lista de reportes -->
+      <ion-item *ngFor="let reporte of reportes">
+        <ion-label>
+          <h2>Región: {{ reporte.region }}</h2>
+          <p>Tipo de Vehículo: {{ reporte.tipoVehiculo }}</p>
+          <p>Marca: {{ reporte.marca }}</p>
+          <p>Modelo: {{ reporte.modelo }}</p>
+          <p>Color: {{ reporte.color }}</p>
+          <p>Patente: {{ reporte.patente }}</p>
+          <p>Fecha de Publicación: {{ reporte.fecha_publicacion }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+</ion-content>
