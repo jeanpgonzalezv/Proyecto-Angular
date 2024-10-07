@@ -47,8 +47,8 @@ export class AppComponent implements OnInit {
   }
 
     // Nueva función para ir a la página de reportes
-    irReportes() {
-      this.router.navigate(['/reportes']); // Asegúrate de tener una ruta configurada para "/reportes"
+    irPostulacion() {
+      this.router.navigate(['/postulacion-barbero']); // Asegúrate de tener una ruta configurada para "/reportes"
     }
   
 }

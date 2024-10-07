@@ -8,21 +8,26 @@
 </ion-header>
 
 <ion-content >
-  <div class="container-1" *ngFor="let reporte of reportes">
-    <h4>Publicado el {{reporte.fecha_publicacion}}</h4>
-    <img src="https://scontent.fscl22-1.fna.fbcdn.net/v/t1.6435-9/133139526_3494317893979078_4421004428671709138_n.jpg?stp=dst-jpg_p526x296&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=gWKzZkEmX_4Q7kNvgE991t8&_nc_ht=scontent.fscl22-1.fna&_nc_gid=AWLzWrhB2WgYHXnf8QYh0pc&oh=00_AYA_aUUT4zGPiebTvo_aU4Q-NIyAfrpK8wW5ZlypO-NCIQ&oe=67004998" alt="Placeholder Image" class="responsive-img">
+  <div class="container-1" *ngFor="let Barbero of Barberos">
+    <h4>Publicado el {{Barbero.fecha_publicacion}}</h4>
+    <img src="/assets/imagenes/logo.jpg" alt="Placeholder Image" class="responsive-img">
 
     <ion-list class="home">
       <ion-item >
-        <ion-label>
-          <h2>Región: {{ reporte.region }}</h2>
-          <p>Tipo de Vehículo: {{ reporte.tipo_vehiculo }}</p>
-          <p>Marca: {{ reporte.marca }}</p>
-          <p>Modelo: {{ reporte.modelo }}</p>
-          <p>Color: {{ reporte.color }}</p>
-          <p>Patente: {{ reporte.patente }}</p>
+        <ion-label style="color: white; text-align: left;">
+          <p style="font-size: 26px; color: white; text-align: left;">¡Bienvenido a <label style="font-size: 26px; color: darkorange; text-align: left;">BarberHub</label>!</p>
+          <p style="color: white; text-align: left;">¡Conecta con los barberos más cercanos según tu ubicación!</p><br><br>
+  
+          <p style="font-size: 20px; color: white; text-align: left;">¿Quieres registrarte para ser un <label style="font-size: 22px; color: darkorange; text-align: left;">Barbero</label>?</p>
+          <p style="color: white; text-align: left;">Solicitamos lo siguiente: </p><br><br>
 
+          <h2 style="font-size: 15px; margin: 0;">Región: {{ Barbero.region }}</h2><br>
+          <p style="font-size: 15px; color: white; margin: 0;">Carnet de Identidad Chileno</p> <p>{{ Barbero.carnet }}</p><br>
+          <p style="font-size: 15px; color: white; margin: 0;">Barberia (Opcional)</p> <p>{{ Barbero.marca }}</p><br>
+          <p style="font-size: 15px; color: white; margin: 0;">Años de Experiencia</p> <p>{{ Barbero.modelo }}</p><br>
         </ion-label>
+        
+        
       </ion-item>
     <ion-button class="ubi">Ver ubicación</ion-button>
     </ion-list>

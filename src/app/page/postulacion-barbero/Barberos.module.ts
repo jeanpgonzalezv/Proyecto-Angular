@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ReportesPageRoutingModule } from './reportes-routing.module';
+import { BarberosPageRoutingModule } from './Barberos-routing.module';
 
-import { ReportesPage } from './reportes.page';
+import { BarberosPage } from './Barberos.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ReportesPageRoutingModule
+    BarberosPageRoutingModule
   ],
-  declarations: [ReportesPage]
+  declarations: [BarberosPage]
 })
-export class ReportesPageModule {}
+export class BarberosPageModule {}

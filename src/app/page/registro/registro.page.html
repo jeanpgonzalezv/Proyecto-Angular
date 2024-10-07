@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>FindCar</ion-title>
+    <ion-title style="color: rgba(226, 129, 12, 0.833)">BarberHub</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,65 +11,41 @@
   <div class="form-container">
     <h2>Registro</h2>
 
-    <form (ngSubmit)="registrarUsuario()">
+    <form (ngSubmit)="registrarUsuario()" [ngStyle]="{'background-color': 'rgba(0, 0, 0, 0.9)', 'opacity': '0.9'}">
       <ion-item>
-        <ion-label>RUT</ion-label>
-        <ion-input
-          type="text"
-          [(ngModel)]="nuevo_usuario.rut"
-          name="rut"
-          required
-        ></ion-input>
+        <ion-label></ion-label>
+        <ion-input type="text" [(ngModel)]="nuevo_usuario.rut" name="rut" placeholder="RUT" required></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label>Nombre</ion-label>
-        <ion-input
-          type="text"
-          [(ngModel)]="nuevo_usuario.nombre"
-          name="nombre"
-          required
-        ></ion-input>
+        <ion-label></ion-label>
+        <ion-input type="text" [(ngModel)]="nuevo_usuario.nombre" name="nombre" placeholder="Nombre"
+          required></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label>Correo Electrónico</ion-label>
-        <ion-input
-          type="email"
-          [(ngModel)]="nuevo_usuario.correo"
-          name="correo"
-          required
-        ></ion-input>
+        <ion-label></ion-label>
+        <ion-input type="email" [(ngModel)]="nuevo_usuario.correo" name="correo" placeholder="Correo Electrónico"
+          required></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label>Contraseña</ion-label>
-        <ion-input
-          type="password"
-          [(ngModel)]="nuevo_usuario.password"
-          name="password"
-          required
-        ></ion-input>
+        <ion-label></ion-label>
+        <ion-input type="password" [(ngModel)]="nuevo_usuario.password" name="password" placeholder="Contraseña"
+        required></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label>Fecha de nacimiento</ion-label>
-        <ion-input
-          type="date"
-          [(ngModel)]="nuevo_usuario.fecha_nacimiento"
-          name="fecha_nacimiento"
-          required
-        ></ion-input>
+        <ion-label></ion-label>
+        <ion-input type="date" [(ngModel)]="nuevo_usuario.fecha_nacimiento" placeholder="Fecha de Nacimiento"
+        name="fecha_nacimiento"
+          required></ion-input>
       </ion-item>
 
-      <ion-button expand="full" type="submit">
+      <ion-button expand="full" type="submit" style="color: white; font-size: 18px;">
         Registrarse
       </ion-button>
 
     </form>
   </div>
 </ion-content>
-
-
-
-

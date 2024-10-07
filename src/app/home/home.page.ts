@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ReportesService } from '../service/reportes/reportes.service';
+import { BarberosService } from '../service/Barberos/Barberos.service';
 
 @Component({
   selector: 'app-home',
@@ -8,18 +8,18 @@ import { ReportesService } from '../service/reportes/reportes.service';
 })
 export class HomePage implements OnInit {
 
-  reportes: any[] = [];
+  Barberos: any[] = [];
 
-  constructor(private reportesService: ReportesService) { }
+  constructor(private BarberosService: BarberosService) { }
 
   ngOnInit() {
     // Verifica que el servicio esté funcionando correctamente
-    console.log('Obteniendo reportes en HomePage');
-    this.reportes = this.reportesService.getReportes();
-    console.log('Reportes en HomePage:', this.reportes); // Verifica que se obtienen los reportes
+    console.log('Obteniendo Barberos en HomePage');
+    this.Barberos = this.BarberosService.getBarberos();
+    console.log('Barberos en HomePage:', this.Barberos); // Verifica que se obtienen los Barberos
   }
 
-  verificarReportes() {
-    console.log('Reportes en HomePage:', this.reportes); // Muestra los reportes en la consola al hacer clic en el botón
+  verificarBarberos() {
+    console.log('Barberos en HomePage:', this.Barberos); // Muestra los Barberos en la consola al hacer clic en el botón
   }
 }

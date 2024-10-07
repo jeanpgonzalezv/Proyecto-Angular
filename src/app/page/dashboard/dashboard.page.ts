@@ -15,15 +15,22 @@ export class DashboardPage implements OnInit {
   constructor(private router: Router, private _usuarioService: UsuariosService) { }
 
   ngOnInit() {
-    const username = this.router.getCurrentNavigation()?.extras?.state?.['usuario'];
-    console.log(username)
-    this.usuario = this._usuarioService.obtener_info_usuario(username);
-    console.log(this.usuario)
+    // Obtener el username del estado de navegación
+    const nombre = this.router.getCurrentNavigation()?.extras?.state?.['nombre'];
+    console.log('Username recibido:', nombre);
+
+    // Buscar el usuario en el servicio
+    this.usuario = this._usuarioService.obtener_info_usuario(nombre);
+    
+    if (!this.usuario) {
+      console.error('Usuario no encontrado');
+    } else {
+      console.log('Usuario encontrado:', this.usuario);
+    }
   }
 
-  obtenerAdministrador(){
-    const esAdministrador = this.usuario?.role.some(rol => rol.nombre == 'administrador');
-    return esAdministrador
+  obtenerAdministrador() {
+    const esAdministrador = this.usuario?.role.some(rol => rol.nombre === 'administrador');
+    return esAdministrador;
   }
-
 }

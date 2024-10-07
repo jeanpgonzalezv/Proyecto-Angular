@@ -1,0 +1,92 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Registrate como Barbero</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="form-container">
+    <h2>Registrarse como Barbero</h2>
+
+    <form (ngSubmit)="agregarBarbero()">
+      <ion-item>
+        <ion-label></ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="nuevoBarbero.region"
+          name="region"
+          placeholder="Región"
+          required
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label></ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="nuevoBarbero.nombre_completo"
+          name="nombreCompleto"
+          placeholder="Nombre Completo"
+
+          required
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label></ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="nuevoBarbero.barberia_trabajo"
+          name="barberia_trabajo"
+          placeholder="Barberia (Opcional)"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label></ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="nuevoBarbero.annos_experiencia"
+          placeholder="Años de Experiencia"
+          name="annos_experiencia"
+          required
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label></ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="nuevoBarbero.posee_carnet"
+          name="posee_carnet"
+          placeholder="¿Posee Carnet Chileno? (SI/NO)"
+
+          required
+        ></ion-input>
+      </ion-item>
+
+      <ion-button expand="full" type="submit">
+        Enviar Postulación de Barbero
+      </ion-button>
+    </form>
+
+  </div>
+
+    <ion-list>
+      <!-- Mostrar la lista de Barberos -->
+      <ion-item *ngFor="let Barbero of Barberos">
+        <ion-label>
+          <h2>Región: {{ Barbero.region }}</h2>
+          <p>Nombre: {{ Barbero.nombre_completo }}</p>
+          <p>Barberia: {{ Barbero.barberia_trabajo }}</p>
+          <p>Años de Experiencia: {{ Barbero.annos_experiencia }}</p>
+          <p>¿Es Chileno?: {{ Barbero.posee_carnet }}</p>
+          <p>Fecha de Publicación: {{ Barbero.fecha_publicacion }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+</ion-content>

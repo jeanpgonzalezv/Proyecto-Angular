@@ -3,8 +3,8 @@
 ion-content {
   --background: none;
   background-image: url('/assets/imagenes/logo.jpg');
-  background-size: cover;
-  background-position: center;
+  background-size: auto;
+  background-position: relative;
   background-repeat: no-repeat;
 }
 
@@ -15,7 +15,7 @@ ion-content {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
+  background-color: #171515;
   max-width: 500px;
   border: 1px solid #000000;
   border-radius: 8px;
