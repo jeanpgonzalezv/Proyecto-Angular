@@ -32,7 +32,7 @@ app.post('/api/registro', (req, res) => {
   const { rut, nombre, correo, password, fecha_nacimiento } = req.body;
 
   // Consulta SQL para insertar datos en la base de datos
-  const query = 'INSERT INTO usuarios (rut, nombre, correo, password, fecha_nacimiento) VALUES (?, ?, ?, ?, ?)';
+  const query = 'INSERT INTO usuarios (rut, nombre, correo, password, fecha_nacimiento, rol) VALUES (?, ?, ?, ?, ?, "cliente")';
   db.query(query, [rut, nombre, correo, password, fecha_nacimiento], (err, results) => {
     if (err) {
       console.error('Error al insertar el usuario:', err);

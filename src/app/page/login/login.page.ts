@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AutentificacionService } from 'src/app/service/autentificacion/autentificacion.service';
-import { AlertController } from '@ionic/angular'; 
-import { UsuariosService } from 'src/app/service/usuarios/usuarios.service'; 
+import { AlertController } from '@ionic/angular';
+import { UsuariosService } from 'src/app/service/usuarios/usuarios.service';
 
 @Component({
   selector: 'app-login',
@@ -24,23 +24,22 @@ export class LoginPage implements OnInit {
   ngOnInit() { }
 
   async login(username: string, password: string) {
-    // Verificamos si el usuario es autenticado por el servicio
+    // Intentamos autenticar al usuario usando el servicio de autenticación
     this._authService.autentificacion(username, password).subscribe({
       next: (response) => {
         console.info("Usuario autenticado:", response);
         
-        // Guardamos el nombre de usuario en localStorage
+        // Guardamos el token y el nombre de usuario en sessionStorage/localStorage
+        sessionStorage.setItem('authToken', response.token); // Suponiendo que el API devuelve un token
         localStorage.setItem('username', username);
-        // Guardamos el token o el estado de autenticación en sessionStorage
-        sessionStorage.setItem('authToken', response.token); // Suponiendo que tu API devuelve un token
 
-        // Agregar el usuario a la lista de usuarios
+        // Agregamos el usuario autenticado a la lista de usuarios
         const usuarioAutenticado = this._usuariosService.obtener_info_usuario(username);
         if (usuarioAutenticado) {
           this._usuariosService.agregar_usuario(usuarioAutenticado);
         }
 
-        // Redirigimos a la página principal después del login
+        // Redirigimos al usuario a la página de inicio (home) tras la autenticación
         this.router.navigate(['home'], {
           state: {
             usuario: username
