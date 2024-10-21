@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario';
-import { UsuariosService } from 'src/app/service/usuarios/usuarios.service';
-import { AutentificacionService } from 'src/app/service/autentificacion/autentificacion.service';
+import { HttpClient } from '@angular/common/http';
+import { AlertController } from '@ionic/angular'; // Para mostrar alertas
 
 @Component({
   selector: 'app-registro',
@@ -20,17 +20,39 @@ export class RegistroPage implements OnInit {
   };
 
   constructor(
-    private usuariosService: UsuariosService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private http: HttpClient,
+    private alertController: AlertController // servicio de alertas
+  ) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
-  registrarUsuario() {
-    console.log('Datos del usuario antes de agregar:', this.nuevo_usuario);
-    this.usuariosService.agregar_usuario(this.nuevo_usuario);
+  async registrarUsuario() {
+    const apiUrl = 'http://localhost:3000/api/registro'; // URL de la API local (cambiar si es necesario)
+
+    try {
+      // Llamada a la API para registrar usuario
+      const response: any = await this.http.post(apiUrl, this.nuevo_usuario).toPromise();
+      console.log('Usuario registrado exitosamente', response);
+      
+      // Mostrar mensaje de éxito
+      await this.mostrarAlerta('Registro exitoso', 'El usuario ha sido registrado correctamente.');
+      
+      // Guardar token en localStorage (si es necesario)
+      // localStorage.setItem('authToken', response.token);
+
+      // Redirigir al usuario después de registrar
+      this.router.navigate(['/login']);
+      
+    } catch (error) {
+      console.error('Error al registrar el usuario', error);
+      
+      // Mostrar mensaje de error
+      await this.mostrarAlerta('Error en el registro', 'Hubo un problema al registrar el usuario. Intenta nuevamente.');
+    }
+
+    // Limpiar el formulario después de la operación
     this.resetFormulario();
-    console.log('Usuario registrado:', this.nuevo_usuario);
   }
 
   private resetFormulario() {
@@ -44,5 +66,13 @@ export class RegistroPage implements OnInit {
     };
   }
 
-
+  // Método para mostrar alertas
+  private async mostrarAlerta(titulo: string, mensaje: string) {
+    const alert = await this.alertController.create({
+      header: titulo,
+      message: mensaje,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
 }

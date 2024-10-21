@@ -1,31 +1,34 @@
 import { Injectable } from '@angular/core';
-import { UsuariosService } from '../usuarios/usuarios.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AutentificacionService {
+  private apiUrl = 'http://localhost:3000/api/login'; 
 
-  private usuarioAutenticado: boolean = false;
+  constructor(private http: HttpClient) {}
 
-  constructor(private _servicioUsuario: UsuariosService) { }
-
-  autentificacion(username: string, password: string): boolean {
-    const usuarios = this._servicioUsuario.obtener_lista_usuarios();
-    const usuarioExiste = usuarios.some(usuario => usuario.correo == username && usuario.password == password);
-    if (usuarioExiste) {
-      this.usuarioAutenticado = true;
-      return true;
-    } else {
-      return false;
-    }
+  public autentificacion(correo: string, password: string): Observable<any> {
+    return this.http.post<any>(this.apiUrl, { correo, password }).pipe(
+      tap(response => {
+        // Almacenar el token en sessionStorage si la autenticación es exitosa
+        if (response.token) {
+          sessionStorage.setItem('authToken', response.token);
+        }
+      })
+    );
   }
 
-  cerrarSesion(): void {
-    this.usuarioAutenticado = false;
+  public cerrarSesion(): void {
+    // Eliminar el token al cerrar sesión
+    sessionStorage.removeItem('authToken');
   }
 
-  estaAutenticado(): boolean {
-    return this.usuarioAutenticado;
+  public estaAutenticado(): boolean {
+    // Verificar si hay un token en sessionStorage
+    return !!sessionStorage.getItem('authToken');
   }
 }

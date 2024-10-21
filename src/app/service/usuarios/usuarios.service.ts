@@ -17,10 +17,10 @@ export class UsuariosService {
     },
     {
       rut: '19774352-2',
-      nombre: "Jeansim Paulsim",
-      password: "password123",
-      correo: "ejemplo2@ejemplo.com",
-      fecha_nacimiento: '15/06/1998',
+      nombre: "Evan Muñoz",
+      password: "admin",
+      correo: "evanmunozmorales@gmail.com",
+      fecha_nacimiento: '17/04/2003',
       role: [{ id: 2, nombre: "administrador" }],
     },
     {
@@ -39,13 +39,18 @@ export class UsuariosService {
     return this.lista_de_usuarios;
   }
 
-  public obtener_info_usuario(username: string): Usuario | undefined {
-    return this.lista_de_usuarios.find(usuario => username === usuario.correo);
+  public obtener_info_usuario(correo: string): Usuario | undefined {
+    return this.lista_de_usuarios.find(usuario => correo === usuario.correo);
   }
 
   public agregar_usuario(usuario: Usuario): void {
-    this.lista_de_usuarios.push(usuario);
-    console.log('Usuario agregado:', usuario); // Para verificar que el usuario se agrega correctamente
+    // Verificamos si el usuario ya existe antes de agregarlo
+    const existeUsuario = this.obtener_info_usuario(usuario.correo);
+    if (!existeUsuario) {
+      this.lista_de_usuarios.push(usuario);
+      console.log('Usuario agregado:', usuario); // Para verificar que el usuario se agrega correctamente
+    } else {
+      console.log('El usuario ya existe:', existeUsuario); // Mensaje de usuario existente
+    }
   }
-
 }

@@ -18,11 +18,11 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-
+    // Aquí puedes agregar cualquier lógica adicional al iniciar la aplicación
   }
 
   estaAutenticado(): boolean {
-    return this._authService.estaAutenticado();
+    return !!sessionStorage.getItem('authToken'); // Verifica si hay un token en sessionStorage
   }
 
   irHome() {
@@ -46,9 +46,8 @@ export class AppComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-    // Nueva función para ir a la página de reportes
-    irPostulacion() {
-      this.router.navigate(['/postulacion-barbero']); // Asegúrate de tener una ruta configurada para "/reportes"
-    }
-  
+  // Nueva función para ir a la página de postulaciones
+  irPostulacion() {
+    this.router.navigate(['/postulacion-barbero']); // Asegúrate de tener una ruta configurada para "/postulacion-barbero"
+  }
 }
